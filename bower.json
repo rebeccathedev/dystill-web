@@ -1,0 +1,25 @@
+{
+  "name": "dystill-web",
+  "description": "A web front end for the dystill MDA.",
+  "main": "",
+  "authors": [
+    "Rebecca Peck <me@rebeccapeck.org>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "http://www.dystill.org",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.6",
+    "angular": "^1.5.0",
+    "angular-bootstrap": "^1.1.2"
+  }
+}
