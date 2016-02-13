@@ -51,3 +51,10 @@ gulp.task('styles', function() {
         .pipe(cssnano())
         .pipe(gulp.dest("public/css"));
 });
+
+gulp.task('watch', ['serve']);
+
+gulp.task('serve', ['build'], function() {
+    gulp.watch('resources/assets/sass/*.scss', ['styles']);
+    gulp.watch(['resources/assets/js/*.js', 'resources/assets/angular/**/*.js'], ['scripts']);
+})
