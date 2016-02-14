@@ -13,6 +13,8 @@
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', "HomeController@index");
+
+    Route::get('/srv/rules', "RulesController@index");
 });
 
 Route::get('auth/login', 'Auth\AuthController@getLogin');

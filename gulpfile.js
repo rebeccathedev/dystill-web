@@ -33,7 +33,8 @@ gulp.task('clean', function() {
 gulp.task('scripts', function() {
     return gulp.src(mainBowerFiles({filter: /.\.js$/}))
         .pipe(order(["**/jquery.js", "**/angular.js", "**/*.js"]))
-        .pipe(addsrc.append("assets/angular/**/*.js"))
+        .pipe(addsrc.append("resources/assets/angular/**/*.js"))
+        .pipe(print())
         .pipe(concat(config.bower.name + '.js'))
         .pipe(minify())
         .pipe(gulp.dest('public/js'));
