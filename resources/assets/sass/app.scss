@@ -1,2 +1,9 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "fonts/zrnicregular";
 
+@import "variables";
+@import "bootstrap";
+
+.navbar-brand {
+    font-family: 'zrnicregular';
+    font-size: 24pt;
+}

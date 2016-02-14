@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'zrnicregular';
+    src: url('/fonts/zrnic___-webfont.eot');
+    src: url('/fonts/zrnic___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/zrnic___-webfont.woff2') format('woff2'),
+         url('/fonts/zrnic___-webfont.woff') format('woff'),
+         url('/fonts/zrnic___-webfont.ttf') format('truetype'),
+         url('/fonts/zrnic___-webfont.svg#zrnicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

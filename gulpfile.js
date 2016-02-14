@@ -20,7 +20,7 @@ var config = {
 gulp.task('default', ['build']);
 
 gulp.task('build', function() {
-    runSequence('clean', ['scripts', 'styles']);
+    runSequence('clean', ['scripts', 'styles', 'fonts']);
 });
 
 gulp.task('clean', function() {
@@ -50,6 +50,13 @@ gulp.task('styles', function() {
         .pipe(concat(config.bower.name + '.css'))
         .pipe(cssnano())
         .pipe(gulp.dest("public/css"));
+});
+
+gulp.task('fonts', function() {
+    return gulp.src(mainBowerFiles({filter: /.\.(ttf|eot|otf|svg|woff.*)$/}))
+        .pipe(addsrc("resources/assets/fonts/*.+(ttf|eot|otf|svg|woff|woff2)"))
+        .pipe(print())
+        .pipe(gulp.dest('public/fonts'));
 });
 
 gulp.task('watch', ['serve']);

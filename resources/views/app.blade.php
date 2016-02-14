@@ -4,12 +4,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Dystill</title>
 
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/dystill-web.css" rel="stylesheet">
 
 	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,7 +20,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
 					<span class="sr-only">Toggle Navigation</span>
@@ -28,7 +28,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
+				<a class="navbar-brand" href="#">Dystill</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbar">
@@ -37,11 +37,11 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					@if(auth()->guest())
-						@if(!Request::is('auth/login'))
+					@if (auth()->guest())
+						@if (!Request::is('auth/login'))
 							<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						@endif
-						@if(!Request::is('auth/register'))
+						@if (!Request::is('auth/register'))
 							<li><a href="{{ url('/auth/register') }}">Register</a></li>
 						@endif
 					@else
