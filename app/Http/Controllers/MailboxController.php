@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Filter;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class RulesController extends Controller
+use Ddeboer\Imap\Server;
+use Ddeboer\Imap\Exception\AuthenticationFailedException;
+
+class MailboxController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +20,24 @@ class RulesController extends Controller
     public function index(Request $request)
     {
         $username = $request->user()->email;
-        $filters = Filter::with('actions')->whereEmail($username)->get();
+        $password = $request->user()->clear;
+        $server = new Server(env("IMAP_SERVER", "localhost"));
+        $connection = $server->authenticate($username, $password);
 
-        return response()->json($filters);
+        $mailboxes = $connection->getMailboxes();
+
+        $mb_array = [];
+        if (!empty($mailboxes)) {
+            foreach ($mailboxes as $mailbox) {
+                $name = $mailbox->getName();
+                $name = str_replace(".", "/", $name);
+                $mb_array[] = $name;
+            }
+        }
+
+        sort($mb_array);
+
+        return response()->json($mb_array);
     }
 
     /**
