@@ -21,6 +21,23 @@
     "bootstrap-sass": "^3.3.6",
     "angular": "^1.5.0",
     "angular-bootstrap": "^1.1.2",
-    "angular-resource": "^1.5.0"
+    "angular-resource": "^1.5.0",
+    "font-awesome": "^4.6.3"
+  },
+  "overrides": {
+      "font-awesome": {
+        "main": [
+          "less/font-awesome.less",
+          "scss/font-awesome.scss",
+          "fonts/*"
+        ]
+      },
+      "bootstrap-sass": {
+        "main": [
+          "assets/stylesheets/_bootstrap.scss",
+          "assets/javascripts/bootstrap.js",
+          "assets/fonts/bootstrap/*"
+        ]
+      }
   }
 }

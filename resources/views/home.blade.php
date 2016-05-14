@@ -25,7 +25,7 @@
         <form class="form">
             <div class="row">
                 <div class="col-lg-3 form-group">
-                    <select class="form-control" name="field">
+                    <select class="form-control" name="field" ng-model="rule.field">
                         <option value="From">From</option>
                         <option value="To">To</option>
                         <option value="Subject">Subject</option>
@@ -34,7 +34,7 @@
                     </select>
                 </div>
                 <div class="col-lg-3 form-group">
-                    <select name="comparison" class="form-control">
+                    <select name="comparison" class="form-control" ng-model="rule.comparison">
                         <option value="0">Starts With</option>
                         <option value="1">Ends With</option>
                         <option value="2">Contains</option>
@@ -43,13 +43,43 @@
                     </select>
                 </div>
                 <div class="col-lg-6 form-group">
-                    <input type="text" class="form-control" />
+                    <input type="text" class="form-control" ng-model="rule.value" />
                 </div>
             </div>
         </form>
-        <button class="pull-right btn btn-success" ng-click="addAction()">Add Action</button>
+
         <h4>Then</h4>
         <div class="clearfix"></div>
+        <form class="form">
+            <div class="row" ng-repeat="action in actions">
+                <div class="col-lg-3 form-group">
+                    <select class="form-control" name="action" ng-change="changeAction(action)" ng-model="action.action">
+                        <option value="to" data-control="mailbox">Deliver To</option>
+                        <option value="markasread">Mark As Read</option>
+                        <option value="flag">Flag</option>
+                        <option value="delete">Delete</option>
+                        <option value="prependsub">Mark As Read</option>
+                        <option value="header">Add A Header</option>
+                        <option value="forward">Forward To</option>
+                        <option value="block">Block</option>
+                        <option value="blocknote">Block And Send Reply</option>
+                        <option value="copyto">Copy To</option>
+                    </select>
+                </div>
+                <div class="col-lg-7 form-group">
+                    <input ng-model="action.argument" ng-show="action.type() == 'input'" type="text" class="form-control" />
+                    <select class="form-control" ng-model="action.argument" ng-show="action.type() == 'mailbox'">
+                        <option ng-repeat="mailbox in mailboxes" value="@{{mailbox}}">@{{mailbox}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-2 form-group">
+                    <div class="pull-right">
+                        <button ng-disabled="!$last" class="btn btn-primary" ng-click="addAction()"><i class="fa fa-plus"></i></button>
+                        <button ng-disabled="actions.length == 1" class="btn btn-primary" ng-click="deleteAction(action)"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
 	</div>
 	<div class="modal-footer">
 		<button ng-disabled="currentlyProcessing" class="btn btn-success" ng-click="save()">Save</button>
@@ -65,8 +95,8 @@
         <div class="clearfix"></div>
 		<div class="row rule-row" ng-repeat="rule in rules | filter:searchText:strict">
 			<div class="col-md-2">
-				<button class="btn btn-success" ng-click="editRule(rule.filter_id)">Edit</button>
-				<button class="btn btn-danger">Delete</button>
+				<button class="btn btn-success" ng-click="editRule(rule)">Edit</button>
+				<button class="btn btn-danger" ng-click="deleteRule(rule)">Delete</button>
 			</div>
 			<div class="col-md-10">
                 <h5>

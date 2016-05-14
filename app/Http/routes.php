@@ -15,6 +15,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', "HomeController@index");
 
     Route::get('/srv/rules', "RulesController@index");
+    Route::post('/srv/rules', "RulesController@store");
+    Route::get('/srv/rules/{id}', "RulesController@show");
+    Route::post('/srv/rules/{id}', "RulesController@update");
+    Route::delete('/srv/rules/{id}', "RulesController@destroy");
+
     Route::get('/srv/mailboxes', "MailboxController@index");
 });
 

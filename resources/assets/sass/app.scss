@@ -2,6 +2,17 @@
 
 @import "variables";
 @import "bootstrap";
+@import "font-awesome";
+
+.fade.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.fade.ng-enter.ng-enter-active {
+  opacity:1;
+}
 
 .btn-success, .btn-success:hover {
     border-bottom: 2px solid darken($btn-success-bg, 20%);
