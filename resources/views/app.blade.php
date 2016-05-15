@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>dystill</title>
 
-	<link href="/css/dystill-web.css" rel="stylesheet">
+	<link href="/css/dystill-web.min.css" rel="stylesheet">
 
 	<!-- Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -40,9 +40,6 @@
 					@if (auth()->guest())
 						@if (!Request::is('auth/login'))
 							<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						@endif
-						@if (!Request::is('auth/register'))
-							<li><a href="{{ url('/auth/register') }}">Register</a></li>
 						@endif
 					@else
 						<li class="dropdown">

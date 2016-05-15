@@ -1,7 +1,10 @@
 @extends('app')
 
 @section('scripts')
-<script src="/js/dystill-web.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="/js/angular-resource.js"></script>
+<script src="/js/ui-bootstrap-tpls.js"></script>
+<script src="/js/dystill-web.min.js"></script>
 @endsection
 
 @section('nav-form')
