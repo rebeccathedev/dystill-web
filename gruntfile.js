@@ -51,13 +51,13 @@ module.exports = function(grunt) {
                 ].join(" && ")
             },
             up: {
-                command: 'docker-compose -f docker-compose.yml -f docker-compose.development.yml up'
+                command: 'docker-compose -f docker-compose.yml up'
             },
             stop: {
-                command: 'docker-compose -f docker-compose.yml -f docker-compose.development.yml stop'
+                command: 'docker-compose -f docker-compose.yml stop'
             },
             down: {
-                command: 'docker-compose -f docker-compose.yml -f docker-compose.development.yml down'
+                command: 'docker-compose -f docker-compose.yml down'
             }
         },
 
