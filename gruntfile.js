@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     const empty = require('is-empty');
 
     const paths = {
-        'assets': './src/resources/assets/',
+        'assets': './dystill-web/resources/assets/',
         'bootstrap': './node_modules/bootstrap-sass/assets/',
         'fontawesome': './node_modules/@fortawesome/fontawesome-free/',
         'jquery': './node_modules/jquery/dist/',
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
             },
             buildDocker: {
                 command: [
-                    "find ./src/storage/logs ! -name '.gitignore' -type f -exec rm -f {} +",
+                    "find ./dystill-web/storage/logs ! -name '.gitignore' -type f -exec rm -f {} +",
                     "docker-compose build"
                 ].join(" && ")
             },
@@ -95,55 +95,55 @@ module.exports = function(grunt) {
             laravel: {
                 files: [
                     {
-                        cwd: './src/app',
+                        cwd: './dystill-web/app',
                         src: '**/*',
                         dest: './build/app',
                         expand: true
                     },
                     {
-                        cwd: './src/bootstrap',
+                        cwd: './dystill-web/bootstrap',
                         src: ['*.php', 'cache'],
                         dest: './build/bootstrap',
                         expand: true
                     },
                     {
-                        cwd: './src/config',
+                        cwd: './dystill-web/config',
                         src: '**/*',
                         dest: './build/config',
                         expand: true
                     },
                     {
-                        cwd: './src/routes',
+                        cwd: './dystill-web/routes',
                         src: '**/*',
                         dest: './build/routes',
                         expand: true
                     },
                     {
-                        cwd: './src/database',
+                        cwd: './dystill-web/database',
                         src: '**/*',
                         dest: './build/database',
                         expand: true
                     },
                     {
-                        cwd: './src/public',
+                        cwd: './dystill-web/public',
                         src: ['css', 'fonts', 'img', 'js', 'templates', 'index.php', '.htaccess', 'robots.txt'],
                         dest: './build/public',
                         expand: true
                     },
                     {
-                        cwd: './src/resources',
+                        cwd: './dystill-web/resources',
                         src: ['lang/**/*', 'views/**/*'],
                         dest: './build/resources',
                         expand: true
                     },
                     {
-                        cwd: "./src/storage",
+                        cwd: "./dystill-web/storage",
                         src: ['app', 'custom_handlers', 'files', 'framework/cache', 'framework/sessions', 'framework/views', 'graphics', 'logs'],
                         dest: './build/storage',
                         expand: true
                     },
                     {
-                        cwd: './src',
+                        cwd: './dystill-web',
                         src: ['artisan', 'server.php'],
                         dest: './build',
                         expand: true
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
             composer: {
                 files: [
                     {
-                        cwd: './src',
+                        cwd: './dystill-web',
                         src: ['composer.json', 'composer.lock'],
                         dest: './build',
                         expand: true

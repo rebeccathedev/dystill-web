@@ -1,0 +1,53 @@
+version: '3'
+services:
+  dystill-web:
+    container_name: dystill-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: rebeccathedev/dystill-web
+    volumes:
+     # - ./build:/dystill-web/app
+     # - ./.app.env:/dystill-web/.env
+     - dystill-web:/dystill-web
+    ports:
+     - "9000:9000"
+    networks:
+     - dystill-web
+
+  dystill-web-db:
+    image: 'mysql:5.7'
+    container_name: dystill-web-db
+    volumes:
+      - ./.dev-bootstrap/dystill-web.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    networks:
+     - dystill-web
+
+  nginx:
+    image: 'nginx'
+    container_name: dystill-nginx
+    volumes:
+      - ./docker/config/nginx.conf:/etc/nginx/conf.d/default.conf
+      - dystill-web:/dystill-web
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: homestead
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    ports:
+      - "4000:80"
+    networks:
+     - dystill-web
+    links:
+      - dystill-web
+
+volumes:
+  dystill-web:
+
+networks:
+  dystill-web:

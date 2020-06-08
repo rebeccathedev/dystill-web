@@ -1,4 +1,6 @@
 .env*
 !.env.example
+.dev-bootstrap
 node_modules
 src_old
+**vendor

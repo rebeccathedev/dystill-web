@@ -21,11 +21,14 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-uglify": "^4.0.1",
     "grunt-sass": "^3.1.0",
+    "grunt-shell": "^3.0.1",
     "is-empty": "^1.2.0",
-    "node-notifier": "^7.0.1"
+    "node-notifier": "^7.0.1",
+    "node-sass": "^4.14.1"
   },
   "dependencies": {
     "bootstrap-sass": "^3.4.1",
+    "dotenv": "^8.2.0",
     "vue": "^2.6.11",
     "vuex": "^3.4.0"
   }
