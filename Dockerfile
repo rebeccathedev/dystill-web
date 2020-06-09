@@ -5,7 +5,11 @@ RUN apt-get update && \
     apt-get install -y libc-client-dev libkrb5-dev && \
     rm -r /var/lib/apt/lists/* && \
     docker-php-ext-configure imap --with-kerberos --with-imap-ssl && \
-    docker-php-ext-install imap && \
-    chmod -R 777 /dystill-web/app/storage
+    docker-php-ext-install -j$(nproc) imap pdo mysqli pdo_mysql && \
+    chmod -R 777 /dystill-web/app/bootstrap/cache && \
+    groupadd -g 9000 dystill && \
+    useradd -u 9000 -ms /bin/bash -g dystill dystill && \
+    chmod -R 777 /dystill-web/app/storage && \
+    chown -R dystill:dystill /dystill-web/app
 
 EXPOSE 80
