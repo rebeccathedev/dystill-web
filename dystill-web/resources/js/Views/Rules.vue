@@ -8,6 +8,13 @@
       </div>
     </div>
     <div class="row">
+      <div class="col-md-12">
+        <div class="float-right">
+          <button class="btn btn-primary" @click="addRule">Add Rule</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-md-6" v-for="rule in filteredRules" :key="rule.filter_id" >
           <filter-item class="mt-3 mb-3" :filter="rule"></filter-item>
       </div>
@@ -28,10 +35,16 @@ export default {
   computed: {
     filteredRules() {
       if (this.search) {
-          return this.rules.filter(filter => !filter.value.search(this.search));
+        return this.rules.filter(filter => !filter.value.search(this.search));
       }
 
       return this.rules;
+    }
+  },
+
+  methods: {
+    addRule() {
+      this.$router.push({ name: 'editRule' });
     }
   },
 

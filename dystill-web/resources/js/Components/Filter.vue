@@ -34,13 +34,15 @@
             >Edit</button>
             <button
                 class="btn btn-danger"
-                @click="deletefilter(filter)"
+                @click="deleteFilter(filter)"
             >Delete</button>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "FilterItem",
 
@@ -54,6 +56,10 @@ export default {
   methods: {
     editFilter(filter) {
       this.$router.push({ name: 'editRule', params: { id: filter.filter_id } })
+    },
+
+    deleteFilter(filter) {
+      axios.delete('/srv/rules/' + filter.filter_id);
     }
   }
 };
