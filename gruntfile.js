@@ -1,6 +1,8 @@
 require("dotenv").config();
 
 module.exports = function (grunt) {
+  var webpack = require("./webpack.config");
+
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-sass");
@@ -215,7 +217,7 @@ module.exports = function (grunt) {
     },
 
     webpack: {
-      config: require("./webpack.config")
+      config: webpack
     }
   });
 
@@ -284,8 +286,14 @@ module.exports = function (grunt) {
     grunt.task.run("shell:init");
   });
 
+  grunt.registerTask("deploy", () => {
+    webpack.mode = "production";
+
+    grunt.task.run("build");
+    grunt.task.run("shell:deployDocker");
+  });
+
   grunt.registerTask("clean", ["shell:clean"]);
-  grunt.registerTask("deploy", ["shell:deployDocker"]);
   grunt.registerTask("up", ["shell:up"]);
   grunt.registerTask("stop", ["shell:stop"]);
   grunt.registerTask("down", ["shell:down"]);

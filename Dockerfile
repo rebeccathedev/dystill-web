@@ -10,6 +10,7 @@ RUN apt-get update && \
     groupadd -g 9000 dystill && \
     useradd -u 9000 -ms /bin/bash -g dystill dystill && \
     chmod -R 777 /dystill-web/app/storage && \
-    chown -R dystill:dystill /dystill-web/app
+    chown -R dystill:dystill /dystill-web/app && \
+    rm -rf /dystill-web/app/.env
 
 EXPOSE 80
