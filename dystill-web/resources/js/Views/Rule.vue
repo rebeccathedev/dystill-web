@@ -138,6 +138,11 @@ export default {
         .catch(error => {
             console.log(error);
         });
+    } else {
+      this.actions.push({
+        action: "to",
+        argument: ""
+      });
     }
 
     axios.get('/srv/mailboxes')

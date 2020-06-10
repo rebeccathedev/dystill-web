@@ -1,13 +1,6 @@
-// Bootstrap
-@import 'bootstrap';
-
 @font-face {
     font-family: 'Zrnic-Regular';
     font-style: normal;
     font-weight: normal;
     src: local('Zrnic-Regular'), url('zrnic.woff') format('woff');
-}
-
-.title {
-    font-family: 'Zrnic-Regular';
 }

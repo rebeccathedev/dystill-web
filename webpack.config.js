@@ -7,7 +7,8 @@ module.exports = {
   mode: "development",
   entry: {
     // This is where the `main-content` component is
-    app: "./dystill-web/resources/js/app.js"
+    app: "./dystill-web/resources/js/app.js",
+    fonts: "./dystill-web/resources/js/fonts.js"
   },
   output: {
     filename: "[name].js",

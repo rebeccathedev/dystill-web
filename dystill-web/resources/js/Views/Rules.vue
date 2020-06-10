@@ -19,6 +19,7 @@
           <filter-item class="mt-3 mb-3" :filter="rule"></filter-item>
       </div>
     </div>
+    <delete-modal :on-delete="deleteRule"></delete-modal>
   </div>
 </template>
 
@@ -26,10 +27,12 @@
 import axios from 'axios';
 
 const FilterItem = () => import("~/Components/Filter");
+const DeleteModal = () => import("~/Components/DeleteModal");
 
 export default {
   components: {
-    FilterItem
+    FilterItem,
+    DeleteModal
   },
 
   computed: {
@@ -43,8 +46,22 @@ export default {
   },
 
   methods: {
+    getRules() {
+      axios.get('/srv/rules')
+        .then(response => {
+          this.rules = response.data;
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    },
+
     addRule() {
       this.$router.push({ name: 'editRule' });
+    },
+
+    deleteRule(filter) {
+      axios.delete('/srv/rules/' + filter.filter_id).then(this.getRules);
     }
   },
 
@@ -56,13 +73,7 @@ export default {
   },
 
   mounted() {
-    axios.get('/srv/rules')
-      .then(response => {
-        this.rules = response.data;
-      })
-      .catch(error => {
-          console.log(error);
-      })
+    this.getRules();
   }
 }
 </script>

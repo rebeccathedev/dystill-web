@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   name: "FilterItem",
 
@@ -59,7 +57,9 @@ export default {
     },
 
     deleteFilter(filter) {
-      axios.delete('/srv/rules/' + filter.filter_id);
+      this.$modal.show('delete-modal', {
+        filter: this.filter
+      });
     }
   }
 };
